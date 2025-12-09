@@ -22,7 +22,7 @@ public class roomdao {
              ResultSet rs = s.executeQuery(sql)) {
 
             while (rs.next()) {
-                rooms r = new Rooms();
+                rooms r = new rooms();
                 r.setId(rs.getInt("id"));
                 r.setName(rs.getString("name"));
                 r.setType(rs.getString("type"));
@@ -96,9 +96,39 @@ public class roomdao {
 
         return false;
     }
-
-
-    // UPDATE STATUS
     public boolean updateStatus(int id, String status) {
+        String sql = "UPDATE rooms SET status = ? WHERE id = ?";
+
+        try (Connection c = DatabaseConnection.getConnection();
+             PreparedStatement p = c.prepareStatement(sql)) {
+
+            p.setString(1, status);
+            p.setInt(2, id);
+
+            return p.executeUpdate() > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
         return false;
     }
+    public boolean delete(int id) {
+        String sql = "DELETE FROM rooms WHERE id = ?";
+
+        try (Connection c = DatabaseConnection.getConnection();
+             PreparedStatement p = c.prepareStatement(sql)) {
+
+            p.setInt(1, id);
+
+            return p.executeUpdate() > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+}
+
+    
