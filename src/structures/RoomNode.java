@@ -11,8 +11,9 @@ import model.rooms;
 public class RoomNode {
     public rooms data;
     public RoomNode next;
+    
     public RoomNode(rooms data) {
-    this.data = data;
-    this.next = null;
+        this.data = data;
+        this.next = null;
 }
 }
