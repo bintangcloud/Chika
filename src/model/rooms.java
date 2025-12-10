@@ -30,6 +30,10 @@ public rooms(String name, String type, int capacity) {
     this.status = "available";
 }
 
+    public rooms() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
 // getters & setters
 public int getId() { return id; }
 public void setId(int id) { this.id = id; } 
